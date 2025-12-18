@@ -27,6 +27,8 @@ async def home(request: Request) -> HTMLResponse:
     _context['email'] = settings.email
     _context['github'] = settings.github
     _context['professional_summary'] = r.professional_summary
+    _context['bullets'] = r.bullets
+    _context['jobs'] = r.jobs
     return templates.TemplateResponse(
         request=request,
         context=_context,

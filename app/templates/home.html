@@ -97,6 +97,74 @@
     }
 
     /* ============================================
+       Bullets Section Styles
+       ============================================ */
+    .bullets-list {
+        list-style-type: square;
+        list-style-position: inside;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem 1.5rem;
+        color: var(--color-text-default);
+    }
+
+    .bullets-list li {
+        padding-left: 0.5rem;
+    }
+
+    .bullets-list li::marker {
+        color: var(--color-accent-primary);
+    }
+
+    /* ============================================
+       Jobs Section Styles
+       ============================================ */
+    .job-item {
+        margin-bottom: 2rem;
+    }
+
+    .job-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .job-title {
+        color: var(--color-text-default);
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .job-contact {
+        color: var(--color-text-default);
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+    }
+
+    .job-bullets {
+        list-style-type: square;
+        list-style-position: outside;
+        margin: 0;
+        padding-left: 1.5rem;
+        color: var(--color-text-default);
+    }
+
+    .job-bullets li {
+        margin-bottom: 0.5rem;
+        padding-left: 0.5rem;
+    }
+
+    .job-bullets li:last-child {
+        margin-bottom: 0;
+    }
+
+    .job-bullets li::marker {
+        color: var(--color-accent-primary);
+    }
+
+    /* ============================================
        Responsive Styles
        ============================================ */
     @media (max-width: 768px) {
@@ -111,6 +179,10 @@
 
         .contact-container {
             width: 100% !important;
+        }
+
+        .bullets-list {
+            grid-template-columns: 1fr;
         }
     }
 {% endblock %}
@@ -175,4 +247,32 @@
             {% endif %}
         </div>
     </div>
+    <!-- Skills Section -->
+    <div class="mb-5">
+        <div class="section-title">
+            <h2>Skills and Competencies</h2>
+        </div>
+        <ul class="bullets-list">
+            {% for bullet in bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Jobs Section -->
+    {% for job in jobs %}
+    <div class="mb-5">
+        <div class="section-title">
+            <h2>{{ job.company }} | {{ job.start_date }} - {{ job.end_date }}</h2>
+        </div>
+        <div class="job-item">
+            <div class="job-title">{{ job.job_title }}</div>
+            <div class="job-contact">{{ job.contact_type }}: {{ job.contact_name }} - {{ job.contact_phone }}</div>
+            <ul class="job-bullets">
+                {% for bullet in job.bullets %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
 {% endblock %}

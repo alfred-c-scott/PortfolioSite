@@ -24,3 +24,67 @@ professional_summary = {
         integrating various sensors and communication protocols over UART, SPI, and I2C interfaces, and validating performance through unit\
         testing and troubleshooting."
 }
+
+bullets = [
+    "3 Phase Power Systems",
+    "Switchgear Installation",
+    "CT Installation and wiring",
+    "Transformer sizing/installation",
+    "Distribution system design",
+    "High Voltage AC/DC Maintenance",
+    "Grid Tied Solar Systems",
+    "Hydraulic Drive Systems",
+    "Servo / Synchro systems",
+    "Motors and Generators",
+    "Autodesk Eagle/Fusion 360",
+    "Through Hole Soldering",
+    "Surface Mount Soldering",
+    "Schweitzer PLC installation",
+    "OAuth 2.0 with TOTP 2FA",
+    "C / C++ / Python / SQL / Ansible",
+    "FastAPI / SQLAlchemy / Pydantic",
+    "Unix / Linux (Debian variants)",
+    "PostgreSQL Database",
+    "AI IDEs Cursor/Claude Code",
+]
+
+jobs = list()
+
+job_template = {
+    "company": "",
+    "start_date": "",
+    "end_date": "",
+    "job_title": "",
+    "contact_type": "",
+    "contact_name": "",
+    "contact_pone": "",
+    "bullets": []
+}
+
+gigavend = job_template.copy()
+gigavend['company'] = "Gigavend Money Services"
+gigavend['start_date'] = "Sep 2024"
+gigavend['end_date'] =  "Nov 2025"
+gigavend['job_title'] = "Project Lead | Software Engineer | Infrastructure Engineer"
+gigavend['contact_type'] = "Owner"
+gigavend['contact_name'] = "Gary Houck"
+gigavend['contact_phone'] = "(859) 955 - 0169"
+gigavend['bullets'] = [
+    "Developed C++ library for Pertech Industries 6100K scanner encapsulating low-level hardware commands to be implemented in a QT6\
+    QML GUI. Supported multi-format document scanning system for check and ID card processing with configurable parameters including\
+    color schemes (grayscale, color, UV, infrared), and real-time sensor monitoring.",
+
+    "Developed C++ library for the DigitalPersona 4500 fingerprint scanner enabling fingerprint capture for login system. Enabling\
+    enrollment, and verification functionality being used in QT6 QML application on Financial Kiosks and ATM machines",
+
+    "Designed and developed a full-stack check cashing application using FastAPI, SQLAlchemy, and PostgreSQL, implementing role-based\
+    authentication with JWT tokens, two-factor auth via TOTP, and real-time customer review workflows with automated barcode\
+    scanning using Azure Document Intelligence APIs. Leveraging AI models such as Claude for frontend HTML layouts and JavaScript API\
+    calls",
+
+    "Built scalable cloud-native infrastructure integrating AWS S3 for file storage, Twilio SMS verification, and containerized the Python\
+    FastAPI application with Docker, implementing custom middleware for token refresh, session management, and automated database\
+    migrations with Alembic"
+]
+
+jobs.append(gigavend)
