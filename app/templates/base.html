@@ -13,32 +13,78 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        body {
-            background-color: #1a1a1a;
-            color: #b0b0b0;
+        /* ============================================
+           CSS Variables - Design System
+           ============================================ */
+        :root {
+            --color-text-default: #b0b0b0;
+            --color-text-white: #ffffff;
+            --color-accent-primary: #58a6ff;
+            --color-bg-page: #1a1a1a;
+            --color-bg-container: #2a2a2a;
+            --color-border-dark: #0d0d0d;
+            --color-border-muted: #404040;
         }
 
+        /* ============================================
+           Base Styles
+           ============================================ */
+        body {
+            background-color: var(--color-bg-page);
+            color: var(--color-text-default);
+        }
+
+        /* ============================================
+           Layout Utilities
+           ============================================ */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           Component Styles - Navigation
+           ============================================ */
         .navbar-dark {
-            background-color: #2a2a2a !important;
-            border: 1px solid #0d0d0d;
+            background-color: var(--color-bg-container) !important;
+            border: 1px solid var(--color-border-dark);
             border-radius: 2px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             margin: 20px;
         }
 
         .navbar-brand, .nav-link {
-            color: #ffffff !important;
+            color: var(--color-text-white) !important;
         }
 
         .nav-link:hover {
-            color: #58a6ff !important;
+            color: var(--color-accent-primary) !important;
         }
 
-        .content-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* ============================================
+           Reusable Patterns - Section Titles
+           ============================================ */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
+
+        .section-title h2 {
+            margin: 0;
+            white-space: nowrap;
+            color: var(--color-accent-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background-color: var(--color-accent-primary);
+        }
+
         {% block style %}
         {% endblock %}
     </style>
