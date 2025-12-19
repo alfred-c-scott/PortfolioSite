@@ -93,6 +93,38 @@
             background-color: var(--color-accent-primary);
         }
 
+        /* ============================================
+           Global Bullet Styles - Site Wide
+           ============================================ */
+        ul, ol {
+            list-style-type: square;
+        }
+
+        ul li::marker,
+        ol li::marker {
+            color: var(--color-accent-primary);
+        }
+
+        /* ============================================
+           Global Card/Container Styles - Site Wide
+           ============================================ */
+        .card {
+            background-color: var(--color-bg-container);
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ============================================
+           Global Link Hover Styles - Site Wide
+           ============================================ */
+        a {
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--color-accent-primary);
+        }
+
         {% block style %}
         {% endblock %}
     </style>

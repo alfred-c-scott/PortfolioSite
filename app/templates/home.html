@@ -14,10 +14,7 @@
     }
 
     .name-address-container {
-        background-color: var(--color-bg-container);
         border-left: 2px solid var(--color-accent-primary);
-        padding: 1.5rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -50,10 +47,7 @@
     }
 
     .contact-container {
-        background-color: var(--color-bg-container);
         border-left: 2px solid var(--color-accent-primary);
-        padding: 1.5rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -89,18 +83,12 @@
     .contact-item a {
         color: var(--color-text-white);
         text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .contact-item a:hover {
-        color: var(--color-accent-primary);
     }
 
     /* ============================================
-       Bullets Section Styles
+       Bullets Section Styles (Page-Specific Layout)
        ============================================ */
     .bullets-list {
-        list-style-type: square;
         list-style-position: inside;
         margin: 0;
         padding: 0;
@@ -112,10 +100,6 @@
 
     .bullets-list li {
         padding-left: 0.5rem;
-    }
-
-    .bullets-list li::marker {
-        color: var(--color-accent-primary);
     }
 
     /* ============================================
@@ -144,7 +128,6 @@
     }
 
     .job-bullets {
-        list-style-type: square;
         list-style-position: outside;
         margin: 0;
         padding-left: 1.5rem;
@@ -158,10 +141,6 @@
 
     .job-bullets li:last-child {
         margin-bottom: 0;
-    }
-
-    .job-bullets li::marker {
-        color: var(--color-accent-primary);
     }
 
     /* ============================================
@@ -191,7 +170,7 @@
 <div class="content-container py-4">
     <div class="header-section">
         <!-- Name and Address Container -->
-        <div class="name-address-container">
+        <div class="name-address-container card">
             <div class="name-address-section">
                 <!-- Name -->
                 <div class="mb-4">
@@ -207,7 +186,7 @@
         </div>
 
         <!-- Contact Info -->
-        <div class="contact-container">
+        <div class="contact-container card">
         <div class="contact-info">
             <div class="contact-item">
                 <i class="bi bi-telephone-fill"></i>
