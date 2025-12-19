@@ -244,8 +244,10 @@
             <h2>{{ job.company }} | {{ job.start_date }} - {{ job.end_date }}</h2>
         </div>
         <div class="job-item">
-            <div class="job-title">{{ job.job_title }}</div>
-            <div class="job-contact">{{ job.contact_type }}: {{ job.contact_name }} - {{ job.contact_phone }}</div>
+            <div class="job-title">{{ job.job_title }}{% if job.contract %} - (Contract Position){% endif %}</div>
+            {% if job.contact_type or job.contact_name or job.contact_phone %}
+            <div class="job-contact">{% if job.contact_type %}{{ job.contact_type }}{% if job.contact_name or job.contact_phone %}: {% endif %}{% endif %}{% if job.contact_name %}{{ job.contact_name }}{% if job.contact_phone %} - {% endif %}{% endif %}{% if job.contact_phone %}{{ job.contact_phone }}{% endif %}</div>
+            {% endif %}
             <ul class="job-bullets">
                 {% for bullet in job.bullets %}
                 <li>{{ bullet }}</li>

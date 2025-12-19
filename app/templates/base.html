@@ -29,9 +29,37 @@
         /* ============================================
            Base Styles
            ============================================ */
+        html {
+            overflow-x: hidden;
+        }
+
+        html, body {
+            height: 100%;
+            max-width: 100vw;
+        }
+
         body {
             background-color: var(--color-bg-page);
             color: var(--color-text-default);
+            overflow-x: hidden;
+        }
+
+        /* Fade mask for content scrolling behind navbar - sits between content and navbar */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px; /* covers top padding (20px) + navbar (~60px) + fade zone */
+            background: linear-gradient(
+                to bottom,
+                var(--color-bg-page) 0%,
+                var(--color-bg-page) 20%,
+                transparent 100%
+            );
+            z-index: 999; /* below navbar (1000), above content */
+            pointer-events: none;
         }
 
         /* ============================================
@@ -39,6 +67,7 @@
            ============================================ */
         main {
             position: relative;
+            padding-top: 100px; /* Offset for fixed navbar (20px top + ~60px navbar height + 20px spacing) */
         }
 
         .content-container {
@@ -50,16 +79,32 @@
         /* ============================================
            Component Styles - Navigation
            ============================================ */
-        nav.navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            margin: 20px;
+        .navbar-wrapper {
+            position: fixed !important;
+            top: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+            z-index: 1000 !important;
+            box-sizing: border-box;
+        }
+
+        .navbar-wrapper nav.navbar {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             background-color: rgba(42, 42, 42, 0.85) !important;
             border: 1px solid var(--color-border-dark);
             border-radius: 2px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
+
+        .navbar-wrapper nav.navbar .container-fluid {
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .navbar-brand, .nav-link {
@@ -130,25 +175,27 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <strong>Alfred Clark Scott</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    {% block nav_items %}{% endblock %}
-                </ul>
+    <!-- Navigation Bar Wrapper -->
+    <div class="navbar-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <strong>Alfred Clark Scott</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        {% block nav_items %}{% endblock %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <!-- Main Content -->
     <main>
