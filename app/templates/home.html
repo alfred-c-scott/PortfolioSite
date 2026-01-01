@@ -14,7 +14,10 @@
     }
 
     .name-address-container {
+        background-color: var(--color-bg-container);
         border-left: 2px solid var(--color-accent-primary);
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -47,7 +50,10 @@
     }
 
     .contact-container {
+        background-color: var(--color-bg-container);
         border-left: 2px solid var(--color-accent-primary);
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -83,23 +89,47 @@
     .contact-item a {
         color: var(--color-text-white);
         text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .contact-item a:hover {
+        color: var(--color-accent-primary);
     }
 
     /* ============================================
-       Bullets Section Styles (Page-Specific Layout)
+       Bullets Section Styles
        ============================================ */
+    .bullets-columns-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0 1.5rem;
+        margin: 0;
+    }
+
+    .bullets-column {
+        display: flex;
+        flex-direction: column;
+    }
+
     .bullets-list {
+        list-style-type: square;
         list-style-position: inside;
         margin: 0;
         padding: 0;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.75rem 1.5rem;
         color: var(--color-text-default);
     }
 
     .bullets-list li {
         padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .bullets-list li:last-child {
+        margin-bottom: 0;
+    }
+
+    .bullets-list li::marker {
+        color: var(--color-accent-primary);
     }
 
     /* ============================================
@@ -128,6 +158,7 @@
     }
 
     .job-bullets {
+        list-style-type: square;
         list-style-position: outside;
         margin: 0;
         padding-left: 1.5rem;
@@ -141,6 +172,10 @@
 
     .job-bullets li:last-child {
         margin-bottom: 0;
+    }
+
+    .job-bullets li::marker {
+        color: var(--color-accent-primary);
     }
 
     /* ============================================
@@ -160,7 +195,7 @@
             width: 100% !important;
         }
 
-        .bullets-list {
+        .bullets-columns-container {
             grid-template-columns: 1fr;
         }
     }
@@ -170,7 +205,7 @@
 <div class="content-container py-4">
     <div class="header-section">
         <!-- Name and Address Container -->
-        <div class="name-address-container card">
+        <div class="name-address-container">
             <div class="name-address-section">
                 <!-- Name -->
                 <div class="mb-4">
@@ -186,7 +221,7 @@
         </div>
 
         <!-- Contact Info -->
-        <div class="contact-container card">
+        <div class="contact-container">
         <div class="contact-info">
             <div class="contact-item">
                 <i class="bi bi-telephone-fill"></i>
@@ -231,11 +266,43 @@
         <div class="section-title">
             <h2>Skills and Competencies</h2>
         </div>
-        <ul class="bullets-list">
-            {% for bullet in bullets %}
-            <li>{{ bullet }}</li>
-            {% endfor %}
-        </ul>
+        <div class="bullets-columns-container">
+            {% if bullets|length > 0 %}
+                {% set total_bullets = bullets|length %}
+                {% set num_columns = 4 %}
+                {% set base_per_column = total_bullets // num_columns %}
+                {% set remainder = total_bullets % num_columns %}
+
+                {% for col_num in range(num_columns) %}
+                    {# Calculate start index directly: col_num * base + min(col_num, remainder) #}
+                    {% if col_num < remainder %}
+                        {% set start_idx = col_num * base_per_column + col_num %}
+                        {% set bullets_in_column = base_per_column + 1 %}
+                    {% else %}
+                        {% set start_idx = col_num * base_per_column + remainder %}
+                        {% set bullets_in_column = base_per_column %}
+                    {% endif %}
+
+                    {% if bullets_in_column > 0 and start_idx < total_bullets %}
+                        {% set end_idx = start_idx + bullets_in_column %}
+                        {% if end_idx > total_bullets %}
+                            {% set end_idx = total_bullets %}
+                        {% endif %}
+                        {% set column_bullets = bullets[start_idx:end_idx] %}
+
+                        {% if column_bullets %}
+                        <div class="bullets-column">
+                            <ul class="bullets-list">
+                                {% for bullet in column_bullets %}
+                                <li>{{ bullet }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
     <!-- Jobs Section -->
     {% for job in jobs %}
@@ -244,10 +311,8 @@
             <h2>{{ job.company }} | {{ job.start_date }} - {{ job.end_date }}</h2>
         </div>
         <div class="job-item">
-            <div class="job-title">{{ job.job_title }}{% if job.contract %} - (Contract Position){% endif %}</div>
-            {% if job.contact_type or job.contact_name or job.contact_phone %}
-            <div class="job-contact">{% if job.contact_type %}{{ job.contact_type }}{% if job.contact_name or job.contact_phone %}: {% endif %}{% endif %}{% if job.contact_name %}{{ job.contact_name }}{% if job.contact_phone %} - {% endif %}{% endif %}{% if job.contact_phone %}{{ job.contact_phone }}{% endif %}</div>
-            {% endif %}
+            <div class="job-title">{{ job.job_title }}</div>
+            <div class="job-contact">{{ job.contact_type }}: {{ job.contact_name }} - {{ job.contact_phone }}</div>
             <ul class="job-bullets">
                 {% for bullet in job.bullets %}
                 <li>{{ bullet }}</li>

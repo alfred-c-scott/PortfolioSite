@@ -26,6 +26,8 @@ professional_summary = {
 }
 
 bullets = [
+    "Python",
+    "C/C++",
     "3 Phase Power Systems",
     "Switchgear Installation",
     "CT Installation and wiring",
