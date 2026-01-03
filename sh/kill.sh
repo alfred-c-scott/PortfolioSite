@@ -3,7 +3,7 @@
 # kill.sh - Stop the server and reload environment variables
 
 ENV_FILE=".env"
-PORT=8030
+PORT=8443
 
 echo "Stopping server and reloading environment..."
 

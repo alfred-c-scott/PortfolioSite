@@ -1,0 +1,70 @@
+<!-- app/templates/project_index.html -->
+{% extends "base.html" %}
+
+{% block style %}
+.page-title {
+    text-align: center;
+    color: var(--color-accent-primary);
+    margin-bottom: 2rem;
+}
+
+.title-separator {
+    border: 0;
+    height: 2px;
+    background-color: var(--color-text-white);
+    margin-bottom: 3rem;
+}
+
+.project-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: flex-start;
+}
+
+.project-thumbnail-container {
+    flex: 1;
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-name {
+    color: var(--color-accent-primary);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    color: var(--color-text-default);
+}
+{% endblock %}
+
+{% block body %}
+<div class="content-container">
+    <h1 class="page-title">Projects</h1>
+    <hr class="title-separator">
+
+    <div class="project-item">
+        <div class="project-thumbnail-container">
+            <img src="{{ url_for('static', path='images/projects/' + image) }}"
+                 alt="{{ name }}"
+                 class="project-thumbnail">
+        </div>
+        <div class="project-info">
+            <h3 class="project-name">{{ name }}</h3>
+            {% for paragraph in description.split('|') %}
+                <p class="project-description">{{ paragraph.strip() }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

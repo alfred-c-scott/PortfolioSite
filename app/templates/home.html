@@ -97,6 +97,50 @@
     }
 
     /* ============================================
+       Education and Certifications Section Styles
+       ============================================ */
+    .education-certifications-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .education-column h3,
+    .certifications-column h3 {
+        color: var(--color-accent-primary);
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+    }
+
+    .education-column p {
+        color: var(--color-text-default);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .certifications-column ul {
+        list-style-type: square;
+        list-style-position: outside;
+        margin: 0;
+        padding-left: 1.5rem;
+        color: var(--color-text-default);
+    }
+
+    .certifications-column ul li {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .certifications-column ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .certifications-column ul li::marker {
+        color: var(--color-accent-primary);
+    }
+
+    /* ============================================
        Bullets Section Styles
        ============================================ */
     .bullets-columns-container {
@@ -195,6 +239,11 @@
             width: 100% !important;
         }
 
+        .education-certifications-columns {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
         .bullets-columns-container {
             grid-template-columns: 1fr;
         }
@@ -238,6 +287,34 @@
         </div>
         </div>
     </div>
+
+    <!-- Education and Certifications Section -->
+    <div class="mb-5">
+        <div class="section-title">
+            <h2>Education and Certifications</h2>
+        </div>
+        <div class="education-certifications-columns">
+            <div class="education-column">
+                <h3>Education</h3>
+                {% if education %}
+                <p>{{ education.univeristy }}</p>
+                <p>{{ education.degree }}</p>
+                <p>{{ education.focus }}</p>
+                {% endif %}
+            </div>
+            <div class="certifications-column">
+                <h3>Certifications</h3>
+                {% if certifications %}
+                <ul>
+                    {% for cert in certifications %}
+                    <li>{{ cert }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
     <!-- Professional Summary -->
     <div class="mb-5">
         <div class="section-title">

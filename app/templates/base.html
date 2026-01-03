@@ -31,6 +31,9 @@
            ============================================ */
         html {
             overflow-x: hidden;
+            /* Scrollbar styling for Firefox */
+            scrollbar-color: var(--color-bg-container) var(--color-bg-page);
+            scrollbar-width: thin;
         }
 
         html, body {
@@ -42,6 +45,24 @@
             background-color: var(--color-bg-page);
             color: var(--color-text-default);
             overflow-x: hidden;
+        }
+
+        /* Scrollbar styling for Chrome, Edge, Safari */
+        html::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: var(--color-bg-page);
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: var(--color-bg-container);
+            border-radius: 6px;
+        }
+
+        html::-webkit-scrollbar-thumb:hover {
+            background: var(--color-border-muted);
         }
 
         /* Fade mask for content scrolling behind navbar - sits between content and navbar */
@@ -115,6 +136,10 @@
             color: var(--color-accent-primary) !important;
         }
 
+        .navbar-brand i {
+            color: var(--color-accent-primary);
+        }
+
         /* ============================================
            Reusable Patterns - Section Titles
            ============================================ */
@@ -180,6 +205,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
+                    <i class="bi bi-person-circle me-2"></i>
                     <strong>Alfred Clark Scott</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -188,7 +214,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="{{ url_for('project_index') }}">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
                         </li>
                         {% block nav_items %}{% endblock %}
                     </ul>

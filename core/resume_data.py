@@ -1,9 +1,7 @@
-name = "Alfred Clark Scott"
-address = "Lexington, KY 40508"
-phone = "(859) 433-6773"
-email = "alfred.scott@protonmail.com"
-github = "github.com/alfred-c-scott"
-site = "power-lab.xyz"
+from core.contact_info import contact_info
+
+contact_info = contact_info
+
 professional_summary = {
     "paragraph_1": "Skilled and versatile engineer, programmer and electronics technician with more than 20 years of experience spanning power distribution\
         engineering, renewable energy field operations, military weapon systems electronics technician, and software development. Expertise in\
@@ -25,9 +23,15 @@ professional_summary = {
         testing and troubleshooting."
 }
 
+certifications = ["Comptia Network+", "Comptia Security+"]
+
+education = {
+    "univeristy": "University of Kentucky",
+    "degree": "B.S. Electrical Engineering - Graduation Date: Fall 2007",
+    "focus": "Power Systems / Computer Science"
+}
+
 bullets = [
-    "Python",
-    "C/C++",
     "3 Phase Power Systems",
     "Switchgear Installation",
     "CT Installation and wiring",
@@ -36,7 +40,7 @@ bullets = [
     "High Voltage AC/DC Maintenance",
     "Grid Tied Solar Systems",
     "Hydraulic Drive Systems",
-    "Servo / Synchro systems",
+    "Servo / Syncro systems",
     "Motors and Generators",
     "Autodesk Eagle/Fusion 360",
     "Through Hole Soldering",
