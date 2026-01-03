@@ -49,3 +49,14 @@ async def project_index(request: Request) -> HTMLResponse:
         name="projects/project_index.html",
         status_code=status.HTTP_200_OK
     )
+
+@app.get('/projects/little_rock')
+async def project_little_rock(request: Request) -> HTMLResponse:
+    _context = dict()
+    _context = p.projects
+    return templates.TemplateResponse(
+        request=request,
+        context=_context,
+        name="projects/project_index.html",
+        status_code=status.HTTP_200_OK
+    )

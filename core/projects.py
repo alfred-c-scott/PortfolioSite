@@ -11,7 +11,7 @@ project_1_description = "This 5.6MW project was completed ahead of schedule by a
 project_1 = {
     "name": "Little Rock, Arkansas - PV Installation",
     "description": project_1_description,
-    "image": "solar_thumbnail.jpg"
+    "index_image": "solar_thumbnail.jpg",
 }
 
 projects.update(project_1)
