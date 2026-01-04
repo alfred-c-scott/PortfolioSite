@@ -1,0 +1,433 @@
+<!-- app/templates/projects/project_little_rock.html -->
+{% extends "base.html" %}
+
+{% block style %}
+/* ============================================
+   Page Title
+   ============================================ */
+.page-title {
+    text-align: center;
+    color: var(--color-accent-primary);
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   Hero Image
+   ============================================ */
+.project-hero-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 3rem;
+}
+
+.project-hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: -25%;
+    margin-bottom: -18%;
+}
+
+/* ============================================
+   Section Styling
+   ============================================ */
+.project-section {
+    margin-bottom: 4rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    margin: 0;
+    white-space: nowrap;
+    color: var(--color-accent-primary);
+}
+
+.section-header::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background-color: var(--color-accent-primary);
+}
+
+.section-header i {
+    color: var(--color-accent-primary);
+    font-size: 1.5rem;
+}
+
+/* ============================================
+   Specs Card
+   ============================================ */
+.overview-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.description-container {
+    flex: 1;
+}
+
+.description-container p {
+    color: var(--color-text-default);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.specs-card {
+    flex: 1;
+    background-color: var(--color-bg-container);
+    border-radius: 4px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    height: fit-content;
+}
+
+.specs-card h3 {
+    color: var(--color-accent-primary);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border-muted);
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border-muted);
+}
+
+.spec-item:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    color: var(--color-text-default);
+    font-weight: 500;
+}
+
+.spec-value {
+    color: var(--color-text-white);
+    text-align: right;
+}
+
+.spec-value-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.spec-value-list li {
+    color: var(--color-text-white);
+}
+
+/* ============================================
+   Image Grid
+   ============================================ */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.image-card {
+    background-color: var(--color-bg-container);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.image-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.image-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.image-caption {
+    padding: 1rem;
+    color: var(--color-text-default);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   Diagram Grid (larger images)
+   ============================================ */
+.diagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+}
+
+.diagram-card img {
+    height: auto;
+    max-height: 400px;
+}
+
+a.diagram-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================
+   Lightbox Modal
+   ============================================ */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--color-text-white);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: var(--color-accent-primary);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-white);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 1rem;
+    transition: color 0.2s;
+}
+
+.lightbox-nav:hover {
+    color: var(--color-accent-primary);
+}
+
+.lightbox-prev {
+    left: -60px;
+}
+
+.lightbox-next {
+    right: -60px;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+@media (max-width: 768px) {
+    .overview-container {
+        flex-direction: column;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .diagram-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lightbox-nav {
+        display: none;
+    }
+}
+{% endblock %}
+
+{% block body %}
+<div class="content-container">
+    <!-- Page Title -->
+    <h1 class="page-title">{{ name }}</h1>
+
+    <!-- Hero Image -->
+    <div class="project-hero-container">
+        <img src="{{ url_for('static', path='images/projects/' + project_image) }}"
+             alt="{{ name }}"
+             class="project-hero-image">
+    </div>
+
+    <!-- Project Overview Section -->
+    <section class="project-section">
+        <div class="section-header">
+            <i class="bi bi-info-circle"></i>
+            <h2>Project Overview</h2>
+        </div>
+        <div class="overview-container">
+            <div class="description-container">
+                {% for paragraph in description.split('|') %}
+                    <p>{{ paragraph.strip() }}</p>
+                {% endfor %}
+            </div>
+            <div class="specs-card">
+                <h3>Technical Specifications</h3>
+                {% for spec in specs %}
+                <div class="spec-item">
+                    <span class="spec-label">{{ spec.label }}</span>
+                    {% if spec.value is iterable and spec.value is not string %}
+                    <ul class="spec-value-list">
+                        {% for item in spec.value %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <span class="spec-value">{{ spec.value }}</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- System Architecture Section -->
+    <section class="project-section">
+        <div class="section-header">
+            <i class="bi bi-diagram-3"></i>
+            <h2>System Architecture</h2>
+        </div>
+        <div class="image-grid diagram-grid">
+            {% for img in diagram_images %}
+            <a href="{{ url_for('static', path='images/projects/' + diagram_pdf) }}" target="_blank" class="image-card diagram-card">
+                <img src="{{ url_for('static', path='images/projects/' + img.src) }}" alt="{{ img.caption }}">
+                <div class="image-caption">{{ img.caption }}</div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Communication & Monitoring Systems Section -->
+    <section class="project-section">
+        <div class="section-header">
+            <i class="bi bi-hdd-network"></i>
+            <h2>Communication & Monitoring Systems</h2>
+        </div>
+        <div class="image-grid">
+            {% for img in comm_images %}
+            <div class="image-card" onclick="openLightbox('{{ url_for('static', path='images/projects/' + img.src) }}')">
+                <img src="{{ url_for('static', path='images/projects/' + img.src) }}" alt="{{ img.caption }}">
+                <div class="image-caption">{{ img.caption }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- 3-Phase Power Systems Section -->
+    <section class="project-section">
+        <div class="section-header">
+            <i class="bi bi-lightning-charge"></i>
+            <h2>3-Phase Power Systems</h2>
+        </div>
+        <div class="image-grid">
+            {% for img in pv_images %}
+            <div class="image-card" onclick="openLightbox('{{ url_for('static', path='images/projects/' + img.src) }}')">
+                <img src="{{ url_for('static', path='images/projects/' + img.src) }}" alt="{{ img.caption }}">
+                <div class="image-caption">{{ img.caption }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#10094;</span>
+        <img src="" alt="Full size image" id="lightbox-img">
+        <span class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#10095;</span>
+    </div>
+</div>
+
+<script>
+    const allImages = [
+        {% for img in comm_images %}'{{ url_for('static', path='images/projects/' + img.src) }}',{% endfor %}
+        {% for img in pv_images %}'{{ url_for('static', path='images/projects/' + img.src) }}',{% endfor %}
+        {% for img in diagram_images %}'{{ url_for('static', path='images/projects/' + img.src) }}',{% endfor %}
+    ];
+
+    let currentImageIndex = 0;
+
+    function openLightbox(src) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        img.src = src;
+        lightbox.classList.add('active');
+        currentImageIndex = allImages.indexOf(src);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+        if (event.target.classList.contains('lightbox') || event.target.classList.contains('lightbox-close')) {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function navigateLightbox(direction) {
+        currentImageIndex += direction;
+        if (currentImageIndex < 0) currentImageIndex = allImages.length - 1;
+        if (currentImageIndex >= allImages.length) currentImageIndex = 0;
+        document.getElementById('lightbox-img').src = allImages[currentImageIndex];
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (!lightbox.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        } else if (e.key === 'ArrowLeft') {
+            navigateLightbox(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigateLightbox(1);
+        }
+    });
+</script>
+{% endblock %}

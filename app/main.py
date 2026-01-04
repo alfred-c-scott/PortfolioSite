@@ -57,6 +57,6 @@ async def project_little_rock(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(
         request=request,
         context=_context,
-        name="projects/project_index.html",
+        name="projects/project_little_rock.html",
         status_code=status.HTTP_200_OK
     )

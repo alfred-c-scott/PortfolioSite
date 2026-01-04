@@ -71,6 +71,9 @@
 }
 
 .project-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
     background-color: transparent;
     color: var(--color-accent-primary);
     border: 2px solid var(--color-accent-primary);
@@ -80,6 +83,7 @@
     font-size: 1rem;
     margin-top: auto;
     width: 100%;
+    box-sizing: border-box;
     transition: background-color 0.2s, color 0.2s;
 }
 
@@ -96,7 +100,7 @@
 
     <div class="project-item">
         <div class="project-thumbnail-container">
-            <img src="{{ url_for('static', path='images/projects/' + image) }}"
+            <img src="{{ url_for('static', path='images/projects/' + index_image) }}"
                  alt="{{ name }}"
                  class="project-thumbnail">
         </div>
@@ -107,7 +111,7 @@
                     <p class="project-description">{{ paragraph.strip() }}</p>
                 {% endfor %}
             </div>
-            <button class="project-btn">More Details & Images</button>
+            <a href="{{ url_for('project_little_rock') }}" class="project-btn">More Details & Images</a>
         </div>
     </div>
 </div>
