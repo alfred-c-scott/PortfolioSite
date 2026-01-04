@@ -31,10 +31,26 @@ certifications = [
 education = {
     "univeristy": "University of Kentucky",
     "degree": "B.S. Electrical Engineering - Graduation Date: Fall 2007",
-    "focus": "Power Systems / Computer Science"
+    "focus": "Power Systems (PEIK) Certificate / Computer Science"
 }
 
 bullets = [
+    "C / C++ / Python / SQL / Ansible",
+    "FastAPI / SQLAlchemy / Pydantic",
+    "Unix / Linux (Debian variants)",
+    "PostgreSQL Database",
+    "AI IDEs Cursor/Claude Code",
+    "OAuth 2.0 with TOTP 2FA",
+    "Basic Networking",
+    "Network Cable Building",
+    "Digital/Analog Oscilliscopes",
+    "Multimeters",
+    "Bench Mount Power Supplies",
+    "Spectrum Analyzers",
+    "Pfsense Firewall setup",
+    "Ubiquiti Switch setup",
+    "AWS EC2, S3, RDS",
+    "Docker/LXC containers",
     "3 Phase Power Systems",
     "Switchgear Installation",
     "CT Installation and wiring",
@@ -49,12 +65,6 @@ bullets = [
     "Through Hole Soldering",
     "Surface Mount Soldering",
     "Schweitzer PLC installation",
-    "OAuth 2.0 with TOTP 2FA",
-    "C / C++ / Python / SQL / Ansible",
-    "FastAPI / SQLAlchemy / Pydantic",
-    "Unix / Linux (Debian variants)",
-    "PostgreSQL Database",
-    "AI IDEs Cursor/Claude Code",
 ]
 
 jobs = list()
