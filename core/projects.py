@@ -2,8 +2,8 @@ projects = dict()
 
 project_1_description = "This 5.6MW project was completed ahead of schedule by a team of 5 electricians and mechanical contractors. A total of\
     10,368 540W Panels, 32 120KVA 3 phase Solaredge inverters, 2x Schweitzer SEL 751 Feeder Protection relays installed on a commercial site in AR.\
-    |My primary responsibility on this site was to install the inverters, verify string voltages, and plan and provide oversight of the installation\
-    of the network cable, network cable conduit, environmental sensor network, Ageto Systems monitoring system, and feeder protection relays.\
+    |My primary responsibility on this site was to install the inverters, verify string voltages, design the material layout, and install the network\
+    cable, network cable conduit, environmental sensor network, and Ageto Systems monitoring system, and feeder protection relays.\
     |Aside from the blistering heat of the Arkansas Summer, this was one of my favorite projects I have ever worked on, and was able to demonstrate my\
     understanding of 3 phase power systems, IT infrastructure, and love of building awesome stuff."
 
@@ -16,13 +16,13 @@ project_1_specs = [
 ]
 
 project_1_comm_images = [
-    {"src": "little_rock/comm_0.jpg", "caption": "Caption placeholder"},
-    {"src": "little_rock/comm_1.jpg", "caption": "Caption placeholder"},
-    {"src": "little_rock/comm_2.jpg", "caption": "Caption placeholder"},
-    {"src": "little_rock/comm_3.jpg", "caption": "Caption placeholder"},
-    {"src": "little_rock/comm_4.jpg", "caption": "Caption placeholder"},
-    {"src": "little_rock/comm_5.jpg", "caption": "Caption placeholder"},
-    {"src": "little_rock/comm_6.jpg", "caption": "Caption placeholder"},
+    {"src": "little_rock/comm_0.jpg", "caption": "North Side Communications Box"},
+    {"src": "little_rock/comm_1.jpg", "caption": "South Side Communications Box"},
+    {"src": "little_rock/comm_2.jpg", "caption": "Computer & Gateway Cabinet"},
+    {"src": "little_rock/comm_3.jpg", "caption": "Solar Edge 120KVA 3-Phase Inverter"},
+    {"src": "little_rock/comm_4.jpg", "caption": "North Side roof penetration"},
+    {"src": "little_rock/comm_5.jpg", "caption": "North Side rigid grounding"},
+    {"src": "little_rock/comm_6.jpg", "caption": "Dual rigid run for Power and Comms"},
 ]
 
 project_1_pv_images = [
