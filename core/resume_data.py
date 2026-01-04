@@ -3,22 +3,25 @@ from core.contact_info import contact_info
 contact_info = contact_info
 
 professional_summary = {
-    "paragraph_1": "Skilled and versatile engineer, programmer and electronics technician with more than 20 years of experience spanning power distribution\
+    "paragraph_1": "Skilled and versatile programmer and electronics technician with more than 20 years of experience spanning power distribution\
         engineering, renewable energy field operations, military weapon systems electronics technician, and software development. Expertise in\
         hydraulic and pneumatic systems and component-level troubleshooting of electrical circuits, with a strong track record of safe, methodical\
         diagnostics in complex, high-risk environments. Proven ability to interpret complex wiring diagrams, relay logic, and technical\
         documentation to identify root cause, implement durable corrective actions, and document results for compliance and repeatability.",
-    "paragraph_2": "Power Distribution Engineer at Kentucky Utilities (LG&E), supported the reliability and safety of high voltage residential and commercial distribution\
+    "paragraph_2": "As Project Lead and Software Engineer at Gigavend Money Services, developed C++ hardware libraries for document scanning \
+        and biometric authentication systems integrated into QT6 GUI applications for financial kiosks. Built full-stack web applications using \
+        FastAPI, PostgreSQL, and Docker with secure authentication, cloud storage integration, and automated deployment pipelines.",
+    "paragraph_3": "Power Distribution Engineer at Kentucky Utilities (LG&E), supported the reliability and safety of high voltage residential and commercial distribution\
         systems through redundant designs, field coordination, and technical analysis—helping ensure reliable service delivery and rapid\
         restoration when outages occurred.",
-    "paragraph_3": "As a Solar Installer/Maintenance Technician, performed installation support, commissioning, troubleshooting, and preventative\
-        maintenance for networked high capacity photovoltaic systems, inverters, electrical interconnects, and associated power monitoring and\
-        control systems, ensuring system performance and adherence to safety standards.",
-    "paragraph_4": "During Operation Enduring Freedom served as Electronics Technician (CIWS) in the U.S. Navy, diagnosed and repaired intricate\
-        electronic and electromechanical systems under high-tempo operational conditions, maintaining readiness through disciplined\
-        maintenance practices and detailed documentation. which required a strong understanding of PLCs, robotics, servos, steppers, as well\
+    "paragraph_4": "As a Solar Installer/Maintenance Technician, performed installation support, commissioning, troubleshooting, and preventative\
+        maintenance for networked high capacity 3 Phase photovoltaic systems, inverters, electrical interconnects, and associated power monitoring\
+        and control systems, ensuring system performance and adherence to safety standards.",
+    "paragraph_5": "During Operation Enduring Freedom served as Electronics Technician (CIWS) in the U.S. Navy, diagnosed and repaired intricate\
+        electronic and electromechanical systems under high-tempo operational conditions, maintaining readiness through disciplined maintenance\
+        practices and detailed documentation. which required a strong understanding of PLCs, robotics, servos, steppers, as well\
         as 60Hz->400Hz power converters and high power amplifiers such as klystrons and magnetrons.",
-    "paragraph_5": "Additionally, novice level expertise in microcontroller development and embedded programming on ESP32 and STM32 platforms,\
+    "paragraph_6": "Additionally, novice level expertise in microcontroller development and embedded programming on ESP32 and STM32 platforms,\
         integrating various sensors and communication protocols over UART, SPI, and I2C interfaces, and validating performance through unit\
         testing and troubleshooting."
 }
@@ -38,6 +41,7 @@ bullets = [
     "C / C++ / Python / SQL / Ansible",
     "FastAPI / SQLAlchemy / Pydantic",
     "Unix / Linux (Debian variants)",
+    "Docker/LXC containers",
     "PostgreSQL Database",
     "AI IDEs Cursor/Claude Code",
     "OAuth 2.0 with TOTP 2FA",
@@ -50,7 +54,7 @@ bullets = [
     "Pfsense Firewall setup",
     "Ubiquiti Switch setup",
     "AWS EC2, S3, RDS",
-    "Docker/LXC containers",
+    "Cloudflare DNS/TLS management",
     "3 Phase Power Systems",
     "Switchgear Installation",
     "CT Installation and wiring",

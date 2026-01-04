@@ -33,6 +33,13 @@
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-thumbnail:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
 .project-info {
@@ -91,6 +98,61 @@
     background-color: var(--color-accent-primary);
     color: var(--color-bg-page);
 }
+
+.project-btn-disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.project-btn-disabled:hover {
+    background-color: transparent;
+    color: var(--color-accent-primary);
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--color-text-white);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: var(--color-accent-primary);
+}
 {% endblock %}
 
 {% block body %}
@@ -98,21 +160,69 @@
     <h1 class="page-title">Projects</h1>
     <hr class="title-separator">
 
+    {% for project in projects %}
     <div class="project-item">
         <div class="project-thumbnail-container">
-            <img src="{{ url_for('static', path='images/projects/' + index_image) }}"
-                 alt="{{ name }}"
-                 class="project-thumbnail">
+            {% if project.index_image %}
+            <img src="{{ url_for('static', path='images/projects/' + project.index_image) }}"
+                 alt="{{ project.name }}"
+                 class="project-thumbnail"
+                 onclick="openLightbox('{{ url_for('static', path='images/projects/' + project.index_image) }}')">
+            {% endif %}
         </div>
         <div class="project-info">
-            <h3 class="project-name">{{ name }}</h3>
+            <h3 class="project-name">{{ project.name }}</h3>
             <div class="project-description-container">
-                {% for paragraph in description.split('|') %}
+                {% if project.description %}
+                {% for paragraph in project.description.split('|') %}
                     <p class="project-description">{{ paragraph.strip() }}</p>
                 {% endfor %}
+                {% endif %}
             </div>
-            <a href="{{ url_for('project_little_rock') }}" class="project-btn">More Details & Images</a>
+            {% if project.detail_url %}
+            <a href="{{ url_for(project.detail_url) }}" class="project-btn">More Details & Images</a>
+            {% else %}
+            <span class="project-btn project-btn-disabled">More Details & Images</span>
+            {% endif %}
         </div>
     </div>
+    {% endfor %}
 </div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img src="" alt="Full size image" id="lightbox-img">
+    </div>
+</div>
+
+<script>
+    function openLightbox(src) {
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        img.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+        if (event.target.classList.contains('lightbox') || event.target.classList.contains('lightbox-close')) {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (!lightbox.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 {% endblock %}

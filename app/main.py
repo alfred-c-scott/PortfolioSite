@@ -41,8 +41,7 @@ async def home(request: Request) -> HTMLResponse:
 
 @app.get('/projects')
 async def project_index(request: Request) -> HTMLResponse:
-    _context = dict()
-    _context = p.projects
+    _context = {"projects": p.projects}
     return templates.TemplateResponse(
         request=request,
         context=_context,
