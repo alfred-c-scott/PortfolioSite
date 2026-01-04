@@ -23,7 +23,10 @@ professional_summary = {
         testing and troubleshooting."
 }
 
-certifications = ["Comptia Network+", "Comptia Security+"]
+certifications = [
+    {"name": "Comptia Network+", "pdf": "CompTIA_Network+_ce_certificate.pdf"},
+    {"name": "Comptia Security+", "pdf": "CompTIA_Security+_ce_certificate.pdf"},
+]
 
 education = {
     "univeristy": "University of Kentucky",

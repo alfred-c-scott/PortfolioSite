@@ -140,6 +140,25 @@
         color: var(--color-accent-primary);
     }
 
+    .cert-pdf-badge {
+        display: inline-block;
+        background-color: transparent;
+        color: var(--color-accent-primary);
+        border: 1px solid var(--color-accent-primary);
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+        margin-right: 0.5rem;
+        text-decoration: none;
+        vertical-align: middle;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .cert-pdf-badge:hover {
+        background-color: var(--color-accent-primary);
+        color: var(--color-bg-page);
+    }
+
     /* ============================================
        Bullets Section Styles
        ============================================ */
@@ -307,7 +326,10 @@
                 {% if certifications %}
                 <ul>
                     {% for cert in certifications %}
-                    <li>{{ cert }}</li>
+                    <li>
+                        <a href="{{ url_for('static', path=cert.pdf) }}" target="_blank" class="cert-pdf-badge">View PDF</a>
+                        {{ cert.name }}
+                    </li>
                     {% endfor %}
                 </ul>
                 {% endif %}
